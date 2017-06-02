@@ -1,10 +1,10 @@
 buildscript {
-    repositories {
-        mavenCentral()
-    }
-    dependencies {
-        classpath("org.springframework.boot:spring-boot-gradle-plugin:1.5.3.RELEASE")
-    }
+  repositories {
+    mavenCentral()
+  }
+  dependencies {
+    classpath("org.springframework.boot:spring-boot-gradle-plugin:1.5.3.RELEASE")
+  }
 }
 
 apply plugin: 'java'
@@ -13,30 +13,33 @@ apply plugin: 'idea'
 apply plugin: 'org.springframework.boot'
 
 jar {
-    baseName = 'gs-accessing-data-rest'
-    version = '0.1.0'
+  baseName = 'gs-accessing-data-rest'
+  version = '0.1.0'
 }
 
 repositories {
-    mavenCentral()
+  mavenCentral()
 }
 
 sourceCompatibility = 1.8
 targetCompatibility = 1.8
 
 dependencies {
-    def resteasyVersion = '3.0.11.Final'
-    compile("org.springframework.boot:spring-boot-starter-data-rest")
-    compile("org.springframework.boot:spring-boot-starter-data-jpa")
-    compile("com.h2database:h2")
-    compile("org.jboss.resteasy:resteasy-jaxrs:${resteasyVersion}")
-    compile("org.jboss.resteasy:resteasy-client:${resteasyVersion}")
-    compile("org.jboss.resteasy:async-http-servlet-3.0:${resteasyVersion}")
-    compile("org.jboss.resteasy:jaxrs-api:${resteasyVersion}")
-    compile("org.jboss.resteasy:resteasy-servlet-initializer:${resteasyVersion}")
-    compile("org.jboss.resteasy:resteasy-jaxb-provider:${resteasyVersion}")
-    compile("org.jboss.resteasy:resteasy-jackson2-provider:${resteasyVersion}")
-    testCompile("org.springframework.boot:spring-boot-starter-test")
+  def resteasyVersion = '3.0.14.Final'
+  def springRest = '1.5.3.RELEASE'
+  compile('junit:junit:4.12') //{ transitive = false }
+  compile("org.springframework.boot:spring-boot-starter-data-rest:${springRest}")
+  compile("org.springframework.boot:spring-boot-starter-data-jpa:${springRest}")
+  compile("org.springframework.boot:spring-boot-starter-security:${springRest}")
+  compile("com.h2database:h2")
+  compile("org.jboss.resteasy:resteasy-jaxrs:${resteasyVersion}")
+  compile("org.jboss.resteasy:resteasy-client:${resteasyVersion}")
+  compile("org.jboss.resteasy:async-http-servlet-3.0:${resteasyVersion}")
+  compile("org.jboss.resteasy:jaxrs-api:${resteasyVersion}")
+  compile("org.jboss.resteasy:resteasy-servlet-initializer:${resteasyVersion}")
+  compile("org.jboss.resteasy:resteasy-jaxb-provider:${resteasyVersion}")
+  compile("org.jboss.resteasy:resteasy-jackson2-provider:${resteasyVersion}")
+  testCompile("org.springframework.boot:spring-boot-starter-test")
 
 }
 
